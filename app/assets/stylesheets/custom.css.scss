@@ -1,0 +1,98 @@
+// Twitter Bootstrap
+@import "bootstrap";
+
+body {
+    padding-top: 50px;
+}
+
+// Responsive Twitter Bootstrap
+@import "bootstrap-responsive";
+
+// Mixins, vars, etc.
+
+$grayMediumLight: #eaeaea;
+
+
+// Universal
+html {
+  overflow-y: scroll;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+// Typography
+
+h1, h2, h3, h4, h5, h6 {
+  line-height:      1;
+}
+
+h1 {
+  font-size:        3em;
+  letter-spacing:   -2px;
+  margin-bottom:    30px;
+  text-align:       center;
+}
+
+h2 {
+  font-size:        1.7em;
+  letter-spacing:   -1px;
+  margin-bottom:    30px;
+  text-align:       center;
+  font-weight:      normal;
+  color:            $grayLight;
+}
+
+p {
+  font-size:        1.1em;
+  line-height:      1.7em;
+}
+
+// Logo
+#logo {
+	
+	float: 		  	left;
+	margin-right: 	10px;
+	
+	color:			#fff;
+	
+	font-size: 		1.6em;
+	letter-spacing: +1px;
+	font-weight: 	bold;
+	
+	&:hover {
+		color:			 gray;
+		text-decoration: none;
+	}
+}
+
+// Buttons
+
+//https://github.com/twitter/bootstrap/issues/3775
+.btn-danger-text {
+  color: #bd362f;
+}
+.btn-danger-text:hover,
+.btn-danger-text:active,
+.btn-danger-text.active,
+.btn-danger-text.disabled,
+.btn-danger-text[disabled] {
+  color: #bd362f;
+  *color: #a9302a;
+}
+.btn-danger-text:active,
+.btn-danger-text.active {
+  color: #942a25 \9;
+}
