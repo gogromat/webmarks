@@ -14,10 +14,11 @@ describe "Static Pages" do
 	describe "Home Page" do
 		before { visit '/' }
 
-		let(:page_title){ 'Home'}
-		let(:heading)   { 'Home'}
+		let(:page_title){ 'Ruby'}
+		let(:heading)   { 'Welcome'}
 
 		it_should_behave_like "all static pages"
+		it { should_not have_selector('title', text: "| Home")}
 	end
 
 	describe "About Page" do
