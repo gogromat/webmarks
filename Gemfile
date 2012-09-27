@@ -35,7 +35,7 @@ group :test do
   # BDD
   gem 'capybara', '1.1.2'
   # Factory - ActiveRecord
-  gem 'factory_girl_rails', '1.4.0'
+  gem 'factory_girl_rails', '4.1.0'
   # BDD
   gem 'cucumber-rails', '1.2.1', require: false
   #gem 'database_cleaner', '0.7.0'
