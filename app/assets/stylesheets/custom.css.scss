@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 body {
-    padding-top: 50px;
+    padding-top: 60px;
 }
 
 // Responsive Twitter Bootstrap
@@ -214,12 +214,12 @@ footer {
 // Forms
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  padding: 10px;
-  height: auto !important;
-  margin-bottom: 15px;
-  @include box_sizing;
+  border:         1px solid #bbb;
+  width:          100%;
+  padding:        10px;
+  height:         auto;
+  margin-bottom:  15px;
+  @include        box_sizing;
 }
 
 #error_explanation {

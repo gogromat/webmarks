@@ -7,4 +7,13 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
+  def user_path_by_email(email)
+    user = User.find_by_email(email.downcase)
+    if !user.nil?
+      link_to user.name, user_path(user)
+    else
+      email.downcase
+    end
+  end
+
 end

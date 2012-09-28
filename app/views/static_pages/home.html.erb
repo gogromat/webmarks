@@ -1,8 +1,5 @@
-<div class="hero-unit" id="main-hero-unit">
-	<h1>Welcome to the Webmarks</h1>
-	<p>You can start adding the content right away,
-	   but if you want to keep your data accross different
-	   computers and browsers, sign up/sign in to this website.</p>
-	<%= link_to "Sign up!", "#", class: "btn btn-large btn-primary" %>
-	<%= link_to "No, thanks!", "#", class: "btn btn-large btn-danger-text", id: "hero-unit-close" %>
-</div>
+<% if signed_in? %>
+
+<% else %>
+    <%= render "static_pages/not_signed_in_home" %>
+<% end %>

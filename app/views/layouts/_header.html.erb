@@ -9,14 +9,32 @@
 			<%= link_to "Webmarks", root_path, id: "logo", class: "brand" %>
 			<nav>
 				<ul class="nav pull-right nav-collapse collapse">
-		            <li><%= link_to "Home", root_path %></li>
-		            <li><%= link_to "About", about_path   %></li>
-		            <li><%= link_to "Contact", contact_path %></li>
+		            <li><%= link_to "Home",     root_path    %></li>
+		            <li><%= link_to "About",    about_path   %></li>
+		            <li><%= link_to "Contact",  contact_path %></li>
 					<!--todo: change to Rails form-->
 					<!--
 				    <form class="navbar-search pull-left">
 				    	<input  type="text"   class="search-query" placeholder="Find webmark">
 				    </form>-->
+                    <% if signed_in? %>
+                      <li><%= link_to "Users", '#' %></li>
+                      <li id="fat-menu" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          Account <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to "Profile",    current_user %></li>
+                          <li><%= link_to "Settings",   '#'          %></li>
+                          <li class="divider"></li>
+                          <li>
+                            <%= link_to "Sign out", signout_path, method: "delete" %>
+                          </li>
+                        </ul>
+                      </li>
+                    <% else %>
+                      <li><%= link_to "Sign in", signin_path %></li>
+                    <% end  %>
 		        </ul>
 			</nav>	
 		</div>
