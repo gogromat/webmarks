@@ -1,0 +1,11 @@
+<%= provide(:title, "Update #{@user.name} profile") %>
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="span6 offset 3">
+    <%= render 'users/user_form' %>
+
+    <%= gravatar_for @user %>
+    <a href="http://gravatar.com/emails">change</a>
+  </div>
+</div>

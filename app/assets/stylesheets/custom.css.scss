@@ -134,6 +134,21 @@ p {
     }
 }
 
+// users index
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
 // Sidebar
 
 aside {
@@ -219,7 +234,7 @@ input, textarea, select, .uneditable-input {
   padding:        10px;
   height:         auto;
   margin-bottom:  15px;
-  @include        box_sizing;
+  //@include        box_sizing;
 }
 
 #error_explanation {
