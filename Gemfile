@@ -11,11 +11,10 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bootstrap-will_paginate', '0.0.6'
 
+gem 'launchy'
+
 # PostGreSQL
 gem 'pg', '0.12.2'
-
-# JQuery
-gem 'jquery-rails'
 
 # Annotation to ActiveRecord's
 gem 'annotate', '2.5.0', group: :development
@@ -55,6 +54,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   # Compress JS
   gem 'uglifier', '>= 1.0.3'
+
+  # JQuery
+  gem 'jquery-rails'
+  # JQuery UI
+  gem 'jquery-ui-rails'
 end
 
 # To use Jbuilder templates for JSON

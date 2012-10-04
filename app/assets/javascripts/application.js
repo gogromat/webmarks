@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
@@ -19,5 +20,11 @@ $(document).ready(function(){
     $('#hero-unit-close').click(function(){
         $('#main-hero-unit').hide();
     });
+
+
+    $('.sortable').sortable();
+    //$('#sortable').disableSelection();
+
+
 
 });

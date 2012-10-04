@@ -1,7 +1,7 @@
 <%= provide(:title, 'Users') %>
 <h1>Webmarks' users</h1>
 
-<div class="users">
+<div class="paginate">
   <%= will_paginate(@users) %>
     <%= render @users %>
   <%= will_paginate(@users) %>

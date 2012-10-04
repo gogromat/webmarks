@@ -1,0 +1,9 @@
+<div class="span3 ui-state-default sortElement">
+  <% if !linkage_item.id.nil? %>
+    <%= linkage_item.link_id %>
+    <%= link_to "Website", linkage_item.link.content, target: 'blank' %>
+    <input type="hidden" value="<%= linkage_item.order %>">
+  <% else %>
+    <%= image_tag "plus.png" %>
+  <% end %>
+</div>

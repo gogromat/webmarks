@@ -1,0 +1,8 @@
+<%= provide(:title, 'Links') %>
+<h1>Public links</h1>
+
+<div class="paginate">
+  <%= will_paginate(@links)  %>
+    <%= render @links %>
+  <% #will_paginate(@links)  %>
+</div>

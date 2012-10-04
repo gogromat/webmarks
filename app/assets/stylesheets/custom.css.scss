@@ -72,6 +72,12 @@ p {
   line-height:      1.7em;
 }
 
+.tl { text-align: left }
+.tr { text-align: right }
+.tc { text-align: center }
+.fl { float: left }
+.fr { float: right }
+
 // Logo
 #logo {
 	
@@ -136,7 +142,7 @@ p {
 
 // users index
 
-.users {
+.paginate {
   list-style: none;
   margin: 0;
   li {
@@ -248,4 +254,21 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+// Sortable
+
+.sortable {
+    margin: 10px 10px 0 0;
+}
+
+.sortElement {
+    margin:         15px 15px 15px 15px !important;
+    padding:        1px;
+    height:         150px;
+    border-radius:  10px  0px;
+    //float: left;
+    //width: 100px;
+    //font-size: 4em;
+    //text-align: center;
 }

@@ -1,0 +1,5 @@
+<% if @user_linkage.any? %>
+    <div class="sortable row">
+        <%= render partial: 'linkages/linkage_item', collection: @user_linkage %>
+    </div>
+<% end %>

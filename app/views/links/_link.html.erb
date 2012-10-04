@@ -1,0 +1,6 @@
+<% if !link.linker.nil? %>
+<li>
+  <a href="http://<%= link.content %>"><%= link.content %></a>
+  <span class="fr">Used by <%= pluralize(link.linker, "user")%> </span>
+</li>
+<% end %>

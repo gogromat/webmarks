@@ -10,4 +10,10 @@ FactoryGirl.define do
     end
 
   end
+
+  factory :link do
+    sequence(:content) { |n| "google_#{n}.com" }
+  end
+
+
 end

@@ -11,11 +11,38 @@ describe "Static Pages" do
 	end
 
 	describe "Home Page" do
-		before { visit '/' }
-		let(:page_title){ ''}
+
+    before { visit root_path }
+
+		let(:page_title){ '' }
 		let(:heading)   { 'Welcome' }
-		it_should_behave_like "all static pages"
-		it { should_not have_selector('title', text: "| Home")}
+
+    it_should_behave_like "all static pages"
+
+    it { should_not have_selector('title', text: "| Home")}
+
+    describe "for signed-in user" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      before do
+        sign_in user
+        15.times { user.linkages.build(link_id: FactoryGirl.create(:link).id).save }
+        visit root_path
+      end
+      after do
+        user.destroy
+        user.linkages.destroy_all
+      end
+
+      it "should render the user's linkage" do
+        user.linkages.each_with_index do |linkage|
+          page.should have_link("Website", href: linkage.link.content)
+          #page.should have_content(linkage.link.content)
+        end
+        page.should have_selector('img', src: 'plus.png')
+        #save_and_open_page
+      end
+    end
 	end
 
   describe "About Page" do
