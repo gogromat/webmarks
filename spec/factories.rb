@@ -12,7 +12,8 @@ FactoryGirl.define do
   end
 
   factory :link do
-    sequence(:content) { |n| "google_#{n}.com" }
+    sequence(:content) { |n| "Google_#{n}"     }
+    sequence(:uri)     { |n| "google_#{n}.com" }
   end
 
 

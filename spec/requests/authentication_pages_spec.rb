@@ -89,8 +89,15 @@ describe "Authentication Pages" do
 
       end
 
+      describe "in the Linkage controller" do
 
+        describe "visiting the linkage edit page" do
+            before { visit new_linkage_path }
+            it     { should have_selector('title', text: 'Sign in') }
+        end
+      end
     end
+
 
     describe "as a wrong user" do
       let(:user)       { FactoryGirl.create(:user) }

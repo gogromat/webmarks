@@ -14,6 +14,7 @@ Webmarks::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   resources :links
+  resources :linkages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

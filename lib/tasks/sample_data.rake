@@ -23,14 +23,15 @@ namespace :db do
 
     # Create links
     #url => domain_name/user_name
-    99.times do
-      content = Faker::Internet.domain_name
-      Link.create!(content: content)
+    99.times do |n|
+      uri     = Faker::Internet.domain_name
+      content = "Website_#{n}"
+      Link.create!(content: content, uri: uri)
     end
 
 
     random = Random.new
-    300.times do |n|
+    1000.times do |n|
       user = User.find(random.rand(1..99))
       link = Link.find(random.rand(1..99))
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930170903) do
+ActiveRecord::Schema.define(:version => 20121004033829) do
 
   create_table "linkages", :force => true do |t|
     t.integer  "user_id"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(:version => 20120930170903) do
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "uri"
   end
 
   add_index "links", ["content"], :name => "index_links_on_content"
+  add_index "links", ["uri"], :name => "index_links_on_uri"
 
   create_table "users", :force => true do |t|
     t.string   "name"
