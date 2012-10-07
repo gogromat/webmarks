@@ -1,0 +1,2 @@
+$('#flash').html("<%= escape_javascript raw(flash_display) %>");
+$('#userLinkage').html("<%= escape_javascript(render partial: 'users/user_linkage_items', locals: {user_linkage: @user_linkage }) %>");

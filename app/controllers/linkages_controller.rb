@@ -11,8 +11,14 @@ class LinkagesController < ApplicationController
         format.html do
             redirect_to root_url
         end
-        format.js #{ render :update }#{ render 'linkages/create' }
+        format.js do
+          if request.referer == root_url
+            @user_linkage = current_user.linkages
+            render 'users/user_linkage.js.erb'
+          end
+        end
       end
+
     else
       flash.now[:error] = "Invalid Link, Text, or both"
 
@@ -20,7 +26,7 @@ class LinkagesController < ApplicationController
         format.html do
           render 'new'
         end
-        format.js #{ render :update }#{ render 'linkages/create' }
+        format.js
       end
     end
   end
