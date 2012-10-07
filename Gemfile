@@ -19,7 +19,6 @@ gem 'pg', '0.12.2'
 # Annotation to ActiveRecord's
 gem 'annotate', '2.5.0', group: :development
 
-
 group :test, :development do
   gem 'rspec-rails', '2.10.0'
   gem 'guard-rspec', '0.5.5'

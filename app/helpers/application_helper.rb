@@ -8,5 +8,15 @@ module ApplicationHelper
 			"#{base_title} | #{page_title}"
 		end
 	end
-	
+
+  def flash_display
+    response = ''
+    flash.each do |name, msg|
+      response = response + content_tag(:div, msg, :class => "alert-#{name}")
+    end
+    flash.discard
+    response
+  end
+
+
 end

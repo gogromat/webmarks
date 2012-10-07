@@ -25,49 +25,17 @@ $(document).ready(function(){
     $('.sortable').sortable();
 
 
-    $('#empty_link').children('img[src*=plus]').css('opacity','0.4');
-    $('#newLinkageForm').hide();
+    //$('#newLinkageForm').hide();
 
     $('#empty_link').live({
         mouseover: function() {
-            self = $(this);
-            self.children('img[src*=plus]').css('opacity','1');
         },
         mouseout: function() {
-            self = $(this);
-            self.children('img[src*=plus]').css('opacity','0.4');
         },
         click: function() {
-            console.log("some request in here");
-
+            //console.log("some request in here");
             $('#newLinkageForm').show();
-
-
-
-            //fetchNewLinkForm();
-            //return false;
         }
     });
-
-    $('.newLinkageSubmit').live('click', function() {
-        $('#newLinkageForm').hide();
-    });
-
-    /*
-    function fetchNewLinkForm() {
-        $.get({
-            url:       'this.href',
-            async:     true,
-            dataType:  'html',
-            success: function(data) {
-                console.log(data);
-            },
-            error: function(data) {
-                console.log(data);
-                alert("Sorry, please try again");
-            }
-
-        });
-    }*/
 
 });

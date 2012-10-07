@@ -272,3 +272,11 @@ input, textarea, select, .uneditable-input {
     //font-size: 4em;
     //text-align: center;
 }
+
+
+#empty_link {
+    opacity: 0.4;
+    &:hover {
+        opacity: 1;
+    }
+}

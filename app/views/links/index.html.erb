@@ -2,7 +2,8 @@
 <h1>Public links</h1>
 
 <div class="paginate">
-  <%= will_paginate(@links)  %>
+  <%= page_entries_info(@links) %>
+  <%= will_paginate @links, class: 'pagination pagination-centered' %>
     <%= render @links %>
-  <% #will_paginate(@links)  %>
+  <%= will_paginate @links, class: 'pagination pagination-centered' %>
 </div>
