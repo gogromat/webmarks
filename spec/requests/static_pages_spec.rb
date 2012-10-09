@@ -21,17 +21,14 @@ describe "Static Pages" do
 
     it { should_not have_selector('title', text: "| Home") }
 
-    describe "for signed-in user" do
+    describe "for signed-in user", js: true do
+
       let(:user) { FactoryGirl.create(:user) }
 
       before do
+        15.times { user.linkages.create(link_id: FactoryGirl.create(:link).id) }
         sign_in user
-        15.times { user.linkages.build(link_id: FactoryGirl.create(:link).id).save }
         visit root_path
-      end
-      after do
-        user.destroy
-        user.linkages.delete_all
       end
 
       it "should render the user's linkage" do
@@ -40,6 +37,51 @@ describe "Static Pages" do
         end
         page.should have_selector('img[src*=plus]')
       end
+
+      let(:link_text) { "Alladin" }
+
+      describe "should add new linkage" do
+
+        before do
+          fill_in 'Link',         with: link_text.downcase+'.com'
+          fill_in 'Text of link', with: link_text
+          click_button 'Add Link'
+          sleep(3)
+        end
+
+        it "should contain new link" do
+          current_path.should == root_path
+          page.should have_content(link_text)
+          page.should have_selector('div.alert-success', text: link_text)
+        end
+
+      end
+
+      describe "should delete all linkages" do
+
+        it "should delete linkages" do
+          page.should have_selector("div.span3.ui-state-default", count: 16)
+
+          #15.times do
+            #expect do
+          #    click_link "delete"
+          #    sleep(1)
+            #end.to change(user.linkages, :count).by(-1)
+          #end
+        end
+
+        it "should have no linkages" do
+          #page.should_not have_content("Alladin")
+          #page.should have_selector("div.span3.ui-state-default", count: 1)
+        end
+
+      end
+
+      after do
+        user.linkages.delete_all
+        user.destroy
+      end
+
     end
 	end
 

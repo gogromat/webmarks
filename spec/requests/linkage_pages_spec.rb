@@ -21,7 +21,7 @@ describe 'Linkage Pages' do
       it { should have_selector('h1',    text: 'Add Link') }
 
 
-      it "should create a linke" do
+      it "should create a link" do
         expect do
           click_button 'Add Link'
         end.to change(Link, :count).by(1)

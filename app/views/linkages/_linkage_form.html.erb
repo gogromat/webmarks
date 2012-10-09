@@ -1,13 +1,14 @@
 <div class="well">
-<%= form_tag linkages_path, remote: true do %>
+<%= form_for @link, url: linkages_path, method: :post,  remote: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
-    <%= label_tag       :uri, 'Link' %>
-    <%= text_field_tag  :uri %>
+  <%= f.label       :uri, 'Link' %>
+  <%= f.text_field  :uri %>
 
-    <%= label_tag       :content, 'Text' %>
-    <%= text_field_tag  :content %>
+  <%= f.label       :content, 'Text of link' %>
+  <%= f.text_field  :content %>
 
-    <%= submit_tag "Add Link", class: 'btn btn-small btn-primary' %>
+  <%= f.submit "Add Link", class: 'btn btn-small btn-primary' %>
 
 <%  end %>
 </div>

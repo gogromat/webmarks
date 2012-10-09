@@ -38,7 +38,8 @@ namespace :db do
       linkages = user.linkages.find_by_link_id(link.id)
 
       if linkages.nil?
-        user.linkages.build(link_id: link.id).save
+        #user.linkages.build(link_id: link.id).save
+        user.linkages.create(link_id: link.id)
       end
 
       #Linkage.find_or_create_by_user_id_and_link_id(user_id: user.id, link_id: link.id)

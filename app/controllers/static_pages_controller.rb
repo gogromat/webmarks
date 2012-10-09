@@ -2,8 +2,8 @@ class StaticPagesController < ApplicationController
 
   def home
     #size = @user_linkage.size
+    @link = Link.new()
     if signed_in?
-      #current_user.linkages.build(link_id:0)
       @user_linkage = current_user.linkages
     else
       @user_linkage = []

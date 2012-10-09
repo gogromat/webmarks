@@ -18,7 +18,8 @@ describe 'Link Pages' do
 
       before(:all) do
         31.times do
-          user.linkages.build(link_id: FactoryGirl.create(:link).id).save
+          #user.linkages.build(link_id: FactoryGirl.create(:link).id).save
+          user.linkages.create(link_id: FactoryGirl.create(:link).id)
         end
         visit links_path
       end
@@ -44,8 +45,9 @@ describe 'Link Pages' do
       let(:link)  { FactoryGirl.create(:link) }
 
       before do
-         user.linkages.build(link_id: link.id).save
-        user2.linkages.build(link_id: link.id).save
+         #user.linkages.build(link_id: link.id).save
+         user.linkages.create(link_id: link.id)
+        user2.linkages.create(link_id: link.id)
         visit links_path
       end
 

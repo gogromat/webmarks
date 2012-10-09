@@ -38,4 +38,17 @@ $(document).ready(function(){
         }
     });
 
+
+    $('.deleteLinkage')
+        //.live('ajax:beforeSend', function(evt, xhr, settings) {console.log('IT IS BEING SEND');})
+        //.live('ajax:complete', function(evt, xhr, status) {console.log('ITS COMPLETE');})
+        .live('ajax:success', function(evt, data, status, xhr) {
+            $(this).parent().remove();
+        })
+        .live('ajax:error', function(evt, xhr, status, error) {
+            console.log('IT IS ERROR');
+            console.log(error);
+            console.log(xhr);
+            console.log(evt);
+        });
 });
