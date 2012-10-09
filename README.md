@@ -6,4 +6,4 @@ gogromat@gmail.com
 == Getting Started
 
 Webmarks on Heroku:
-http://evening-inlet-2916.herokuapp.com/
+http://bookmarks2.herokuapp.com/
