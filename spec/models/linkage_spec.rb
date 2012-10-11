@@ -14,11 +14,8 @@ require 'spec_helper'
 
 describe Linkage do
 
-
   let(:user) { FactoryGirl.create(:user) }
-
   let(:link) { FactoryGirl.create(:link) }
-
   let(:linkage) { user.linkages.build(link_id: link.id) }
 
   subject { linkage }
@@ -34,20 +31,32 @@ describe Linkage do
   end
 
   describe "linkage methods" do
-    it { should respond_to(:user) }
-    it { should respond_to(:link) }
-    its(:user) { should == user   }
-    its(:link) { should == link   }
+    it { should respond_to(:user)  }
+    it { should respond_to(:link)  }
+    it { should respond_to(:order) }
+    its(:user) { should == user    }
+    its(:link) { should == link    }
   end
 
   describe "when user id is not present" do
     before { linkage.user_id = nil }
-    it     { should_not be_valid }
+    it     { should_not be_valid   }
   end
 
   describe "when link id is not present" do
     before { linkage.link_id = nil }
-    it     { should_not be_valid }
+    it     { should_not be_valid   }
   end
+
+  describe "when order is not present" do
+    before { linkage.order = nil   }
+    it     { should_not be_valid   }
+  end
+
+  describe "when order is negative" do
+    before { linkage.order = -1    }
+    it     { should_not be_valid   }
+  end
+
 
 end

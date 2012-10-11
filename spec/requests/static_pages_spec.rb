@@ -21,68 +21,108 @@ describe "Static Pages" do
 
     it { should_not have_selector('title', text: "| Home") }
 
+    let(:user)   { FactoryGirl.create(:user) }
+    let(:number) { 15 }
+
     describe "for signed-in user", js: true do
 
-      let(:user) { FactoryGirl.create(:user) }
-
-      before do
-        15.times { user.linkages.create(link_id: FactoryGirl.create(:link).id) }
-        sign_in user
-        visit root_path
-      end
-
-      it "should render the user's linkage" do
-        user.linkages.each do |linkage|
-          page.should have_link(linkage.link.content, href: linkage.link.uri)
-        end
-        page.should have_selector('img[src*=plus]')
-      end
-
-      let(:link_text) { "Alladin" }
-
-      describe "should add new linkage" do
+      describe "should respond to links" do
 
         before do
-          fill_in 'Link',         with: link_text.downcase+'.com'
-          fill_in 'Text of link', with: link_text
-          click_button 'Add Link'
-          sleep(3)
+          number.times { user.linkages.create(link_id: FactoryGirl.create(:link).id) }
+          sign_in user
+          visit root_path
         end
 
-        it "should contain new link" do
-          current_path.should == root_path
-          page.should have_content(link_text)
-          page.should have_selector('div.alert-success', text: link_text)
+        it "should render the user's linkage" do
+          user.linkages.each do |linkage|
+            page.should have_link(linkage.link.content, href: linkage.link.uri)
+          end
+          page.should have_selector('img[src*=plus]')
+        end
+
+        let(:link_text) { "Alladin" }
+
+        describe "should add new linkage" do
+
+          before do
+            fill_in 'Link',         with: link_text.downcase+'.com'
+            fill_in 'Text of link', with: link_text
+            click_button 'Add Link'
+            sleep(3)
+          end
+
+          it "should contain new link" do
+            current_path.should == root_path
+            page.should have_content(link_text)
+            page.should have_selector('div.alert-success', text: link_text)
+          end
+
+        end
+
+        describe "should delete all linkages" do
+
+          it "should delete linkages" do
+            page.should have_selector("div.span3.ui-state-default", count: 16)
+            number.times do
+              expect do
+                click_link "delete"
+                sleep(1)
+              end.to change(user.linkages, :count).by(-1)
+            end
+            page.should have_selector("div.span3.ui-state-default", count: 1)
+          end
+
+        end
+
+        after do
+          user.linkages.delete_all
+          user.destroy
+        end
+      end
+
+      describe "should order the linkages" do
+
+        let(:link1) { FactoryGirl.create(:link, content: 'First') }
+        let(:link2) { FactoryGirl.create(:link, content: 'Second')}
+        let(:link3) { FactoryGirl.create(:link, content: 'Third') }
+
+        before do
+          sign_in user
+          linkage1 = user.linkages.build(link_id: link1.id, order: 1)
+          linkage2 = user.linkages.build(link_id: link2.id, order: 2)
+          linkage3 = user.linkages.build(link_id: link3.id, order: 3)
+        end
+
+        it "should be in proper order" do
+          3.times do |n|
+            user.linkages.each do |linkage|
+              linkage.order should == n
+            end
+          end
+          user.linkages should == [linkage1, linkage2, linkage3]
+        end
+
+        describe "changing the order" do
+          before do
+            linkage3.order = 1
+            linkage2.order = 2
+            linkage1.order = 3
+            linkage3.save
+            linkage2.save
+            linkage1.save
+          end
+
+          it "should have new order" do
+            user.linkages should == [linakge3, linkage2, linkage1]
+          end
         end
 
       end
 
-      describe "should delete all linkages" do
-
-        it "should delete linkages" do
-          page.should have_selector("div.span3.ui-state-default", count: 16)
-
-          #15.times do
-            #expect do
-          #    click_link "delete"
-          #    sleep(1)
-            #end.to change(user.linkages, :count).by(-1)
-          #end
-        end
-
-        it "should have no linkages" do
-          #page.should_not have_content("Alladin")
-          #page.should have_selector("div.span3.ui-state-default", count: 1)
-        end
-
-      end
-
-      after do
-        user.linkages.delete_all
-        user.destroy
-      end
 
     end
+
 	end
 
   describe "About Page" do

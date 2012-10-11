@@ -22,10 +22,16 @@ $(document).ready(function(){
     });
 
 
-    $('.sortable').sortable();
+    $('.sortable').sortable({
+      stop: function(event,ui) {
+          console.log("New position:" + ui.item.index());
+          //console.log(ui);
+          //console.log("Item: ");console.log(ui.item);
+          console.log($(ui.item).html());
 
+      }
+    });
 
-    //$('#newLinkageForm').hide();
 
     $('#empty_link').live({
         mouseover: function() {
@@ -33,7 +39,6 @@ $(document).ready(function(){
         mouseout: function() {
         },
         click: function() {
-            //console.log("some request in here");
             $('#newLinkageForm').show();
         }
     });
@@ -47,8 +52,8 @@ $(document).ready(function(){
         })
         .live('ajax:error', function(evt, xhr, status, error) {
             console.log('IT IS ERROR');
-            console.log(error);
-            console.log(xhr);
-            console.log(evt);
+            //console.log(error);
+            //console.log(xhr);
+            //console.log(evt);
         });
 });

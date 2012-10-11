@@ -2,7 +2,7 @@
   <% if !linkage_item.id.nil? %>
     <%= linkage_item.link_id %>
     <%= link_to linkage_item.link.content, linkage_item.link.uri, target: '_blank' %>
-    <input type="hidden" value="<%= linkage_item.order %>">
+    <input type="hidden" value="<%= linkage_item.order %>" name="order">
 
     <%= render partial: 'linkages/linkage_delete', locals: {linkage_item: linkage_item} %>
 
