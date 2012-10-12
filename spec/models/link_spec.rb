@@ -46,7 +46,7 @@ describe Link do
   end
 
   describe "when uri is too short" do
-    before { @link.uri = "a"          }
+    before { @link.uri = "a" * 2      }
     it     { should_not be_valid      }
   end
 

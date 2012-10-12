@@ -32,12 +32,10 @@ $(document).ready(function(){
     });
 
     function saveSortedLinkages(sortedLinkages) {
-        console.log($(this).attr('href'));
         $.ajax({
             type:     'POST',
-            url:      "linkages/order",
+            url:      "linkages/order.js",
             async:    true,
-            dataType: 'html',
             data: sortedLinkages,
             success: function(data) {
                 console.log(data);

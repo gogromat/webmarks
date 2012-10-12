@@ -11,7 +11,7 @@
 #
 
 class Linkage < ActiveRecord::Base
-  attr_accessible :link_id, :order#, :user_id
+  attr_accessible :link_id, :order
 
   belongs_to :user
   belongs_to :link

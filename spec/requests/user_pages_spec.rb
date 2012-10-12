@@ -54,7 +54,8 @@ describe "User Pages" do
         let(:user) { User.find_by_email('user@example.com') }
 
         it { should have_selector('title', text: full_title('')) } #user.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        #it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_success_message('Welcome') }
         it { should have_link('Sign out') }
       end
     end
@@ -78,7 +79,8 @@ describe "User Pages" do
     describe "with invalid information" do
       before { click_button "Save" }
       it { should have_content('error') }
-      it { should have_selector('div.alert.alert-error', text: 'error') }
+      #it { should have_selector('div.alert.alert-error', text: 'error') }
+      it { should have_error_message('error') }
     end
 
     describe "with valid information" do
@@ -94,7 +96,8 @@ describe "User Pages" do
       end
 
       it { should have_selector('title', text: full_title(''))}
-      it { should have_selector('div.alert.alert-success')}
+      #it { should have_selector('div.alert.alert-success')}
+      it { should have_success_message }
       it { should have_link('Sign out', href: signout_path) }
       specify { user.reload.name.should  == new_name  }
       specify { user.reload.email.should == new_email }

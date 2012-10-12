@@ -18,11 +18,11 @@ class Link < ActiveRecord::Base
 
   validates :content,
             presence: true,
-            length: { minimum: 5, maximum: 50 }
+            length: { minimum: 3, maximum: 50 }
 
   validates :uri,
             presence: true,
-            length: { minimum: 5, maximum: 300 }
+            length: { minimum: 4, maximum: 300 }
 
 
   def self.by_user_number(params)

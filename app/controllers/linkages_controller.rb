@@ -1,7 +1,7 @@
 class LinkagesController < ApplicationController
 
   before_filter :signed_in_user
-
+  include ApplicationHelper
 
   def new
     @link = Link.new()
@@ -52,26 +52,29 @@ class LinkagesController < ApplicationController
     end
   end
 =end
+
   def order
     ordered_linkages = params[:linkage]
-    @linkages = current_user.linkages.find(ordered_linkages)
+    @user_linkage = current_user.linkages.find(ordered_linkages)
 
-    @linkages.each do |item|
-
+    @user_linkage.each do |item|
       item.update_attributes!({order: ordered_linkages.index(item.id.to_s)+1}
                               .reject{|k,v| v.blank?})
-
-      #item.order = ordered_linkages.index(item.id.to_s)+1
     end
 
-    logger.debug "#{@linkages}"
-
-    #@linkages.update_all
+    flash.now[:success] = "New order is saved #{emoticon}"
 
     respond_to do |format|
-      format.all {
-        redirect_to root_path
-      }
+      format.all do
+        if request.referer == root_url
+          @link = Link.new()
+          @user_linkage = current_user.linkages
+          render 'users/user_linkage.js.erb'
+        end
+      end
+      #format.html do
+      #  redirect_to root_path
+      #end
     end
   end
 

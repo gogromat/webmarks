@@ -22,7 +22,7 @@ describe "Static Pages" do
     it { should_not have_selector('title', text: "| Home") }
 
     let(:user)   { FactoryGirl.create(:user) }
-    let(:number) { 15 }
+    let(:number) { 5 }
 
     describe "for signed-in user", js: true do
 
@@ -55,7 +55,8 @@ describe "Static Pages" do
           it "should contain new link" do
             current_path.should == root_path
             page.should have_content(link_text)
-            page.should have_selector('div.alert-success', text: link_text)
+            #page.should have_selector('div.alert-success', text: link_text)
+            page.should have_success_message(link_text)
           end
 
         end
@@ -63,11 +64,11 @@ describe "Static Pages" do
         describe "should delete all linkages" do
 
           it "should delete linkages" do
-            page.should have_selector("div.span3.ui-state-default", count: 16)
+            page.should have_selector("div.span3.ui-state-default", count: number+1)
             number.times do
               expect do
                 click_link "delete"
-                sleep(1)
+                sleep(1.5)
               end.to change(user.linkages, :count).by(-1)
             end
             page.should have_selector("div.span3.ui-state-default", count: 1)
@@ -89,37 +90,22 @@ describe "Static Pages" do
 
         before do
           sign_in user
-          linkage1 = user.linkages.build(link_id: link1.id, order: 1)
-          linkage2 = user.linkages.build(link_id: link2.id, order: 2)
-          linkage3 = user.linkages.build(link_id: link3.id, order: 3)
         end
+
+        let(:linkage1) { user.linkages.build(link_id: link1.id, order: 1) }
+        let(:linkage2) { user.linkages.build(link_id: link2.id, order: 2) }
+        let(:linkage3) { user.linkages.build(link_id: link3.id, order: 3) }
 
         it "should be in proper order" do
-          3.times do |n|
-            user.linkages.each do |linkage|
-              linkage.order should == n
-            end
+          user.linkages.each_with_index do |linkage,index|
+            puts linkage.order
+            puts index
+            linkage.order.should eq index+1
           end
-          user.linkages should == [linkage1, linkage2, linkage3]
+
+          user.linkages.should eq [linkage1, linkage2, linkage3]
         end
-
-        describe "changing the order" do
-          before do
-            linkage3.order = 1
-            linkage2.order = 2
-            linkage1.order = 3
-            linkage3.save
-            linkage2.save
-            linkage1.save
-          end
-
-          it "should have new order" do
-            user.linkages should == [linakge3, linkage2, linkage1]
-          end
-        end
-
       end
-
 
     end
 
