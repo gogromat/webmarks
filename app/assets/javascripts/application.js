@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
+//= require jquery.isotope
 //= require bootstrap
 //= require_tree .
 $(document).ready(function(){
@@ -21,28 +22,31 @@ $(document).ready(function(){
         $('#main-hero-unit').hide();
     });
 
-
     $('.sortable').sortable({
+      items: '> .sortItem',
       stop: function(event,ui) {
-          console.log("New position:" + ui.item.index());
-          //console.log(ui);
-          //console.log("Item: ");console.log(ui.item);
-          console.log($(ui.item).html());
-
+          //console.log("New position:" + ui.item.index());
+          var sortedLinkages = $('.sortable').sortable('serialize');
+          saveSortedLinkages(sortedLinkages);
       }
     });
 
-
-    $('#empty_link').live({
-        mouseover: function() {
-        },
-        mouseout: function() {
-        },
-        click: function() {
-            $('#newLinkageForm').show();
-        }
-    });
-
+    function saveSortedLinkages(sortedLinkages) {
+        console.log($(this).attr('href'));
+        $.ajax({
+            type:     'POST',
+            url:      "linkages/order",
+            async:    true,
+            dataType: 'html',
+            data: sortedLinkages,
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
 
     $('.deleteLinkage')
         //.live('ajax:beforeSend', function(evt, xhr, settings) {console.log('IT IS BEING SEND');})
@@ -56,4 +60,6 @@ $(document).ready(function(){
             //console.log(xhr);
             //console.log(evt);
         });
+
+
 });

@@ -29,4 +29,6 @@ class Linkage < ActiveRecord::Base
                 message: 'Invalid order'
             }
 
+  default_scope order: "linkages.order ASC"
+
 end

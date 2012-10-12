@@ -52,6 +52,28 @@ class LinkagesController < ApplicationController
     end
   end
 =end
+  def order
+    ordered_linkages = params[:linkage]
+    @linkages = current_user.linkages.find(ordered_linkages)
+
+    @linkages.each do |item|
+
+      item.update_attributes!({order: ordered_linkages.index(item.id.to_s)+1}
+                              .reject{|k,v| v.blank?})
+
+      #item.order = ordered_linkages.index(item.id.to_s)+1
+    end
+
+    logger.debug "#{@linkages}"
+
+    #@linkages.update_all
+
+    respond_to do |format|
+      format.all {
+        redirect_to root_path
+      }
+    end
+  end
 
 
   def destroy
