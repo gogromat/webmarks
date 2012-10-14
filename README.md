@@ -6,4 +6,4 @@ gogromat@gmail.com
 == Getting Started
 
 Webmarks on Heroku:
-http://bookmarks2.herokuapp.com/
+https://bookmarks2.herokuapp.com/
