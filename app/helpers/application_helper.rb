@@ -18,16 +18,11 @@ module ApplicationHelper
     response
   end
 
-
-
-
   def emoticon
     eyes  = [":","8","=",";","X"]
     nose  = ["","-",">"]
     smile = [")","p","D","D","}"]
     eyes[rand(4)]+nose[rand(2)]+smile[rand(4)]
   end
-
-
 
 end

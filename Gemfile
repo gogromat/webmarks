@@ -13,6 +13,8 @@ gem 'bootstrap-will_paginate', '0.0.6'
 
 gem 'launchy'
 
+gem 'paperclip'
+
 # PostGreSQL
 gem 'pg', '0.12.2'
 

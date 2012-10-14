@@ -21,12 +21,15 @@ describe 'Link Pages' do
           #user.linkages.build(link_id: FactoryGirl.create(:link).id).save
           user.linkages.create(link_id: FactoryGirl.create(:link).id)
         end
+      end
+
+      before do
         visit links_path
       end
+
       after(:all) do
         Link.delete_all
         user.linkages.delete_all
-
       end
 
       it { should have_selector('div.pagination') }
@@ -35,7 +38,8 @@ describe 'Link Pages' do
 
       it 'should list each link' do
         Link.by_user_number(params).each do |link|
-          page.should have_link(link.content, href: 'http://'+link.uri)
+          link.uri.should =~ /http(s)?:\/\//
+          page.should have_link(link.content, href: link.uri)
         end
       end
     end

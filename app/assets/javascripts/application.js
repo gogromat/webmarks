@@ -38,10 +38,10 @@ $(document).ready(function(){
             async:    true,
             data: sortedLinkages,
             success: function(data) {
-                console.log(data);
+                //console.log(data);
             },
             error: function(data) {
-                console.log(data);
+                //console.log(data);
             }
         });
     }
@@ -59,5 +59,24 @@ $(document).ready(function(){
             //console.log(evt);
         });
 
+    function searchWebsite(website) {
+        var url = $(website);
+        //console.log($(url).attr('href'));
+        var faviconURL = url.attr('href')
+
+
+
+    }
+
+    /*
+    $("a[href^='http']").live('change').each(function() {
+        $(this).css({
+            background: "url(http://g.etfv.co/" + this.href +
+            ") left center no-repeat",
+            "padding-left": "20px",
+            "background-size": "16px 16px"
+        });
+    });
+    */
 
 });

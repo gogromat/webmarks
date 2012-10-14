@@ -1,7 +1,12 @@
 <div class="span3 ui-state-default sortElement sortItem" id="linkage_<%= linkage_item.id %>">
   <% if !linkage_item.id.nil? %>
-    <%= linkage_item.link_id %>
-    <%= link_to linkage_item.link.content, linkage_item.link.uri, target: '_blank' %>
+
+    <a href="<%= url_with_protocol linkage_item.link.uri %>"
+       style="background: url('<%= linkage_item.link.favicon.url %>') left center no-repeat;background-size: 16px 16px;padding-left: 20px;"
+       target="_blank">
+      <%= linkage_item.link.content %>
+    </a>
+
     <input type="hidden" value="<%= linkage_item.order %>" name="order">
 
     <%= render partial: 'linkages/linkage_delete', locals: {linkage_item: linkage_item} %>

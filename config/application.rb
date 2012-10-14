@@ -64,5 +64,8 @@ module Webmarks
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Paperclip default settings
+    #config.paperclip_defaults = {storage: :fog}
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010021056) do
+ActiveRecord::Schema.define(:version => 20121013220138) do
 
   create_table "linkages", :force => true do |t|
     t.integer  "user_id"
@@ -27,9 +27,13 @@ ActiveRecord::Schema.define(:version => 20121010021056) do
 
   create_table "links", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "uri"
+    t.string   "favicon_file_name"
+    t.string   "favicon_content_type"
+    t.integer  "favicon_file_size"
+    t.datetime "favicon_updated_at"
   end
 
   add_index "links", ["content"], :name => "index_links_on_content"
