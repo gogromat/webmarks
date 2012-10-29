@@ -2,6 +2,7 @@ class LinkagesController < ApplicationController
 
   before_filter :signed_in_user
   include ApplicationHelper
+  include ImageHelper
 
   def new
     @link = Link.new()
@@ -9,7 +10,12 @@ class LinkagesController < ApplicationController
 
   def create
     @link = Link.new(params[:link])
+
     if @link.save and current_user.linkages.create(link_id: @link.id)
+
+      add_website_image(@link)
+      get_website_path_and_image(@link)
+      resize_website_image(image_path, image)
 
       flash.now[:success] = "Link to \"#{@link.content}\" (#{@link.uri}) was successfully added!"
 

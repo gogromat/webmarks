@@ -25,4 +25,9 @@ module ApplicationHelper
     eyes[rand(4)]+nose[rand(2)]+smile[rand(4)]
   end
 
+  def add_http(link)
+  	link.match(/^www.|^[a-zA-Z0-9]+.[a-zA-Z]+$/) ? link.prepend('http://') : link
+  end
+
+
 end

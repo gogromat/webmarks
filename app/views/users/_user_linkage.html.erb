@@ -1,5 +1,11 @@
-<% if @user_linkage.any? %>
-    <div class="sortable row" id="userLinkage">
+<div class="sortable row" id="userLinkage">
+  <% if @user_linkage.any? %>
         <%= render partial: 'users/user_linkage_items', locals: {user_linkage: @user_linkage} %>
-    </div>
-<% end %>
+  <% end %>
+
+  <%= render 'links/link_empty' %>
+
+  <div id="newLinkageForm" class="span6">
+    <%= render 'linkages/linkage_form' %>
+  </div>
+</div>

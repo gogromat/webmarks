@@ -35,8 +35,9 @@ describe "Static Pages" do
         end
 
         it "should render the user's linkage" do
+          save_and_open_page
           user.linkages.each do |linkage|
-            page.should have_link(linkage.link.content, href: linkage.link.uri)
+            page.should have_link(linkage.link.content, href: url_with_protocol(linkage.link.uri))
           end
           page.should have_selector('img[src*=plus]')
         end

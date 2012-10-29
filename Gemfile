@@ -11,8 +11,12 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bootstrap-will_paginate', '0.0.6'
 
+# ImageMagick support
+#gem "rmagick", "~> 2.13.1"
+
 gem 'launchy'
 
+# File
 gem 'paperclip'
 
 # PostGreSQL
@@ -69,3 +73,7 @@ end
 # gem 'capistrano'
 # To use debugger
 # gem 'debugger'
+
+group :production do #this is used on heroku
+  gem "rmagick"
+end

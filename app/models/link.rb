@@ -11,7 +11,6 @@
 #  favicon_content_type :string(255)
 #  favicon_file_size    :integer
 #  favicon_updated_at   :datetime
-#
 
 class Link < ActiveRecord::Base
   attr_accessible :content, :uri
