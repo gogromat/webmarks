@@ -5,11 +5,12 @@ module ImageHelper
   end
 
   def add_website_image(link)
-    phantomjs_path = 'lib/assets/phantomjs/'
+    phantomjs_path = 'vendor/phantomjs/bin/'#'lib/assets/phantomjs/'
+    script_path    = 'lib/assets/'
     website        = add_http(link.uri)
     image_path     = "#{get_images_path}links/#{link.id}"
     image          = 'output.png'
-    phantomjs      = `#{phantomjs_path}phantomjs.exe #{phantomjs_path}rasterize.js #{website} #{image_path}/#{image}`
+    `#{phantomjs_path}phantomjs #{script_path}rasterize.js #{website} #{image_path}/#{image}`
   end
 
   def get_website_path_and_image(link, absolute = true, big_image = true)
