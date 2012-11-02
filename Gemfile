@@ -75,5 +75,5 @@ end
 # gem 'debugger'
 
 group :production do #this is used on heroku
-  gem "rmagick"
+  gem "rmagick", "2.12.0", require: "RMagick"
 end

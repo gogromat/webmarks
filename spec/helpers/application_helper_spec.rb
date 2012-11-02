@@ -18,7 +18,24 @@ describe ApplicationHelper do
     end
   end
 
+  describe "add_http" do
 
+    it "should add http" do
+      addresses = %w[www.google.com www.1.com
+                     1.com google.com kaka.ru 1.su me.w o.o www.o.o]
+      addresses.each do |address|
+        add_http(address).should =~ /^http:\/\//
+      end
+    end
 
+    it "should not add http" do
+      addresses = %w[http://dada.com  http://wwww.example.org
+                     ftp://someweb.rg nikita://super.man]
+      addresses.each do |address|
+        add_http(address).should_not =~ /^http:\/\/[a-zA-Z]+:\/\//
+      end
+    end
+
+  end
 
 end
