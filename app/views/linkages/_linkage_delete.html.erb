@@ -1,4 +1,5 @@
-<%= link_to "delete", linkage_path(linkage_item),
+<% text = "delete" if local_assigns[:text].nil?  %>
+<%= link_to text, linkage_path(linkage_item),
                       method: :delete,
                       remote: true,
-                      class: 'deleteLinkage' %>
+                      class: 'deleteLinkage fr' %>

@@ -5,8 +5,12 @@ body {
     padding-top: 60px;
 }
 
+
+
 // Responsive Twitter Bootstrap
 @import "bootstrap-responsive";
+
+
 
 // Mixins, vars, etc.
 
@@ -19,11 +23,15 @@ $red: #bd362f;
   -webkit-box-sizing:   border-box;
   box-sizing:           border-box;
 }
-// * {
-//    -moz-box-sizing: border-box;
-//    -webkit-box-sizing: border-box;
-//    box-sizing: border-box;
-//}
+
+// Link overflow text
+@mixin text_overflow_ellipse {
+  text-overflow:      ellipsis;
+  -o-text-overflow:   ellipsis;
+  -ms-text-overflow:  ellipsis;
+}
+
+
 
 // Universal
 html {
@@ -44,6 +52,8 @@ textarea {
     margin-bottom:  10px;
   }
 }
+
+
 
 // Typography
 
@@ -77,6 +87,7 @@ p {
 .tc { text-align: center }
 .fl { float: left }
 .fr { float: right }
+.float_clear { clear: both }
 
 // Logo
 #logo {
@@ -95,6 +106,8 @@ p {
 		text-decoration: none;
 	}
 }
+
+
 
 // Buttons
 
@@ -115,6 +128,8 @@ p {
   color: #942a25 \9;
 }
 
+
+
 // Miscellaneous
 
 .debug_dump {
@@ -125,8 +140,8 @@ p {
   @include box_sizing;
 }
 
-// Gravatar
 
+// Gravatar
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -205,6 +220,8 @@ aside {
     }
 }
 
+
+
 // Footer
 
 footer {
@@ -232,6 +249,8 @@ footer {
   }
 }
 
+
+
 // Forms
 
 input, textarea, select, .uneditable-input {
@@ -256,27 +275,49 @@ input, textarea, select, .uneditable-input {
   @extend .error;
 }
 
-// Sortable
-
-.sortable {
-    margin: 10px 10px 0 0;
-}
-
-.sortElement {
-    margin:         15px 15px 15px 15px;
-    padding:        1px;
-    height:         150px;
-    border-radius:  0px  10px;
-    //float: left;
-    //width: 100px;
-    //font-size: 4em;
-    //text-align: center;
-}
-
-
 #empty_link {
     opacity: 0.4;
     &:hover {
         opacity: 1;
     }
 }
+
+
+
+// Sortable Bookmarks containers
+
+.bookmark {
+  margin:           15px 15px 15px 15px;
+  max-width:        500px;
+  max-height:       400px;
+  border:           solid 1px $grayLight;
+  background:       white;
+
+  .bookmark_top {
+    margin:         4px;
+    background:     $grayMediumLight;
+  }
+
+  .bookmark_bottom {
+    margin-top:     4px;
+    padding-left:   10px;
+    padding-right:  5px;
+    background:     #fbfbfb;
+
+    .bookmark_bottom_lowest {
+        overflow:           hidden;
+        white-space:        nowrap;
+        @include text_overflow_ellipse;
+    }
+  }
+
+}
+
+.screenshot {
+  max-width:        100%;
+  max-height:       100%;
+  margin-left:      auto;
+  margin-right:     auto;
+  display:          block;
+}
+

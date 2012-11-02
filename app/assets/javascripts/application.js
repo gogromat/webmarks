@@ -18,19 +18,25 @@
 //= require_tree .
 $(document).ready(function(){
 
+    // Hide home page hero unit
     $('#hero-unit-close').click(function(){
         $('#main-hero-unit').hide();
     });
 
+
+    // Sort Links
     $('.sortable').sortable({
       items: '> .sortItem',
       stop: function(event,ui) {
           //console.log("New position:" + ui.item.index());
           var sortedLinkages = $('.sortable').sortable('serialize');
-          saveSortedLinkages(sortedLinkages);
+          if (sortedLinkages !== previouslySorted) {
+              previouslySorted = sortedLinkages;
+              saveSortedLinkages(sortedLinkages);
+          }
       }
     });
-
+    var previouslySorted = $('.sortable').sortable('serialize');
     function saveSortedLinkages(sortedLinkages) {
         $.ajax({
             type:     'POST',
@@ -41,31 +47,26 @@ $(document).ready(function(){
                 //console.log(data);
             },
             error: function(data) {
-                //console.log(data);
+                alert(data);
             }
         });
     }
 
+    // Delete Linkages & Link
     $('.deleteLinkage')
         //.live('ajax:beforeSend', function(evt, xhr, settings) {console.log('IT IS BEING SEND');})
         //.live('ajax:complete', function(evt, xhr, status) {console.log('ITS COMPLETE');})
         .live('ajax:success', function(evt, data, status, xhr) {
-            $(this).parent().remove();
+            $(this).parents(".bookmark").remove()
         })
         .live('ajax:error', function(evt, xhr, status, error) {
-            console.log('IT IS ERROR');
-            //console.log(error);
-            //console.log(xhr);
-            //console.log(evt);
+            alert('IT IS ERROR');
         });
 
     function searchWebsite(website) {
         var url = $(website);
         //console.log($(url).attr('href'));
         var faviconURL = url.attr('href')
-
-
-
     }
 
     /*

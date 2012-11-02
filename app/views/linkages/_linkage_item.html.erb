@@ -1,15 +1,30 @@
-<div class="span3 ui-state-default sortElement sortItem" id="linkage_<%= linkage_item.id %>">
-  <% if !linkage_item.id.nil? %>
+    <!--class:  span3 sortElement ui-state-default -->
+<% if !linkage_item.id.nil? %>
+    <div class='bookmark sortItem span3' id="linkage_<%= linkage_item.id %>">
 
-    <a href="<%= url_with_protocol linkage_item.link.uri %>"
-       style="background: url('<%= linkage_item.link.favicon.url %>') left center no-repeat;background-size: 16px 16px;padding-left: 20px;"
-       target="_blank">
-      <%= linkage_item.link.content %>
-    </a>
+        <div class='bookmark_top'>
+            <%= get_website_image_tag(linkage_item.link) %>
+        </div>
 
-    <input type="hidden" value="<%= linkage_item.order %>" name="order">
+        <div class='bookmark_bottom'>
+            <div class="fl">
+                <a href="<%= url_with_protocol linkage_item.link.uri %>"
+                 style="background: url('<%= linkage_item.link.favicon.url %>') left center no-repeat; background-size: 16px 16px; padding-left: 20px;"
+                 target="_blank">
+                    <%= linkage_item.link.content %>
+                </a>
+            </div>
+            <div class="fr">
+                <%= render partial: 'linkages/linkage_delete',
+                           locals: {linkage_item:   linkage_item,
+                                    text:           icon_set("icon-remove", other_class: " " ) } %>
+                <input type="hidden" value="<%= linkage_item.order %>" name="order">
+            </div>
+            <div class="float_clear"></div>
+            <div class="bookmark_bottom_lowest">
+              <abbr class="muted"><%= linkage_item.link.uri %></abbr>
+            </div>
+        </div>
 
-    <%= render partial: 'linkages/linkage_delete', locals: {linkage_item: linkage_item} %>
-
-  <% end %>
-</div>
+    </div>
+<% end %>
