@@ -13,7 +13,7 @@ class LinkagesController < ApplicationController
 
     if @link.save and current_user.linkages.create(link_id: @link.id)
 
-      add_website_image(@link)
+      #add_website_image(@link)
       #path_and_image = get_website_path_and_image(@link)
       #resize_website_image(path_and_image)
 
