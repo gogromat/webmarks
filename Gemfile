@@ -12,7 +12,6 @@ gem 'bootstrap-sass', '2.0.4'
 gem 'bootstrap-will_paginate', '0.0.6'
 
 # ImageMagick support
-#gem "rmagick", "~> 2.13.1"
 
 gem 'launchy'
 
@@ -75,5 +74,5 @@ end
 # gem 'debugger'
 
 group :production do #this is used on heroku
-  gem "rmagick", "2.12.0", require: "RMagick"
+  gem "rmagick", "2.13.1", require: "RMagick"
 end
