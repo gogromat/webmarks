@@ -22,3 +22,6 @@
 
 # Ignore images
 /app/assets/images/links/*.png
+
+# Ignore manuals
+/vendor/phantomjs/share/
