@@ -19,3 +19,6 @@
 .project
 .DS_Store
 .idea
+
+# Ignore images
+/app/assets/images/links/*.png
