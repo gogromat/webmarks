@@ -33,6 +33,7 @@ module ImageHelper
     end
   end
 
+
   def resize_website_image(args = {})
     #convert alpineelements2.png -crop 1024x768+0+0 -resize 400x300 resized.png
     path  = args[:path]
