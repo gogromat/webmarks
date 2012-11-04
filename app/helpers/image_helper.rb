@@ -5,15 +5,16 @@ module ImageHelper
   end
 
   def add_website_image(link)
-    phantomjs_path = 'lib/assets/phantomjs/'
+    script_path    = 'lib/assets/phantomjs/rasterize.js'
     website        = add_http(link.uri)
     image_path     = "#{get_images_path}links/#{link.id}"
     image          = 'output.png'
-    phantomjs      = `#{phantomjs_path}phantomjs.exe #{phantomjs_path}rasterize.js #{website} #{image_path}/#{image}`
+   #phantomjs      = `#{phantomjs_path}phantomjs.exe #{phantomjs_path}rasterize.js #{website} #{image_path}/#{image}`
+    phantomjs      = `phantomjs #{script_path} #{website} #{image_path}/#{image}`
   end
 
   def get_website_path_and_image(link, absolute = true, big_image = true)
-    path = ''
+    path  = ''
     image = ''
     absolute ? path << get_images_path : ''
     path << "links/#{link.id}"
@@ -31,7 +32,6 @@ module ImageHelper
       image_tag "links/no_image.png", class: "screenshot"
     end
   end
-
 
   def resize_website_image(args = {})
     #convert alpineelements2.png -crop 1024x768+0+0 -resize 400x300 resized.png
