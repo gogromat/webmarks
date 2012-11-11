@@ -15,8 +15,20 @@ gem 'bootstrap-will_paginate', '0.0.6'
 
 gem 'launchy'
 
-# File
+
+# File Upload
 gem 'paperclip'
+
+# Iron Worker gem - for PhantomJS process
+gem 'iron_worker'
+gem 'iron_worker_ng'
+
+# Amazon W S
+gem     "aws"
+
+gem     "subexec"
+gem     "mini_magick"
+
 
 # PostGreSQL
 gem 'pg', '0.12.2'
@@ -71,6 +83,13 @@ end
 # gem 'capistrano'
 # To use debugger
 # gem 'debugger'
+
+
+# Rails server (oopse to WEBRick)
+gem "thin"
+
+# Test Procfile
+gem "foreman"
 
 group :production do #this is used on heroku
   gem "rmagick", "2.13.1"#, require: "RMagick"

@@ -34,4 +34,11 @@ Webmarks::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Heroku IronWorker   (heroku config | grep IRON)
+  ENV['IRON_WORKER_TOKEN']      = '3_SOZDbECZnU4NFLEVQwhyhtHvE'
+  ENV['IRON_WORKER_PROJECT_ID'] = '5095e7ecdac51e03c301ab46'
+  #ENV['IRON_WORKER_TOKEN']      = 'gQoNOYESQm7p4fkI_1rwWpBhNUQ'
+  #ENV['IRON_WORKER_PROJECT_ID'] = '5095e22ca2fa925b4702a455'
+
 end

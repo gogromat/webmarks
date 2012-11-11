@@ -1,0 +1,5 @@
+puts    "scatman!"
+gem     "aws"
+gem     "subexec"
+gem     "mini_magick"
+exec    "image_processor.rb"

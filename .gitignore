@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+# Ignore configuration files
+/config/environments/
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -25,3 +28,6 @@
 
 # Ignore manuals
 /vendor/phantomjs/share/
+/vendor/assets/workers/
+
+/config/environments/

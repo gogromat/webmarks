@@ -1,0 +1,5 @@
+image_url: "http://dev.iron.io/images/iron_pony.png"
+aws:
+    access_key:     "AKIAIRPO5UVCSY3543IA"
+    secret_key:     "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"
+    s3_bucket_name: "webmarks"

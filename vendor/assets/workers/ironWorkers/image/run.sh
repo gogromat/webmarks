@@ -1,0 +1,1 @@
+phantomjs-1.6.1-linux-x86_64-dynamic/bin/phantomjs rasterize.js http://www.google.com output.png
